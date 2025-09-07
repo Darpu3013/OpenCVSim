@@ -1,0 +1,16 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+apply from: '../build.common.gradle'
+
+dependencies {
+    api project(':EOCV-Sim')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+tasks.register('runSim', JavaExec) {
+    dependsOn 'classes'
+    mainClass = 'com.github.serivesmejia.eocvsim.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
